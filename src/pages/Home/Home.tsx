@@ -1,11 +1,11 @@
-import GlobalProgress from "../../components/GlobalProgress/GlobalProgress";
+import GlobalProgress from '../../components/GlobalProgress/GlobalProgress';
 
 function Home() {
-    return (
-        <>
-            <GlobalProgress />
-        </>
-    );
+  return (
+    <>
+      <GlobalProgress />
+    </>
+  );
 }
 
 export default Home;
