@@ -1,0 +1,27 @@
+.not-started {
+    padding: 1.25rem;
+    background-color: #87b4e5;
+    border-radius: 15px;
+}
+
+.flex-pill {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sub-heading {
+    font-size: 1.1rem;
+    margin-top: 7px;
+}
+
+.m-t-0 {
+    margin-top: 0;
+}
+
+.start-now {
+    margin-top: 0;
+    color: white;
+    background-color: blue;
+    border-radius: 20px;
+    padding: 8px;
+}

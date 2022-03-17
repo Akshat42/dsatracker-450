@@ -1,8 +1,11 @@
 .topic-container {
     display: grid;
-    border: 1px solid;
-    width: 60vw;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 2%;
+    width: 70vw;
     margin: auto;
     height: 80vh;
     overflow: auto;
+    padding: 3%;
 }

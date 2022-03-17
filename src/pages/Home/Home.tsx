@@ -1,4 +1,5 @@
 import GlobalProgress from '../../components/GlobalProgress/GlobalProgress';
+import Topic from '../../components/Topic/Topic';
 import TopicContainer from '../../components/TopicContainer/TopicContainer';
 
 function Home() {
@@ -6,7 +7,60 @@ function Home() {
     <>
       <GlobalProgress />
       <TopicContainer>
-        <p>Topics goes here</p>
+        <>
+          <Topic topicName = "Array"
+            totalQuestions = {36}
+            questionsDone = {0}
+          />
+          <Topic topicName = "Array"
+            totalQuestions = {36}
+            questionsDone = {0}
+          />
+          <Topic topicName = "Array"
+            totalQuestions = {36}
+            questionsDone = {0}
+          />
+          <Topic topicName = "Array"
+            totalQuestions = {36}
+            questionsDone = {0}
+          />
+          <Topic topicName = "Array"
+            totalQuestions = {36}
+            questionsDone = {0}
+          />
+          <Topic topicName = "Array"
+            totalQuestions = {36}
+            questionsDone = {0}
+          />
+          <Topic topicName = "Array"
+            totalQuestions = {36}
+            questionsDone = {0}
+          />
+          <Topic topicName = "Array"
+            totalQuestions = {36}
+            questionsDone = {0}
+          />
+          <Topic topicName = "Array"
+            totalQuestions = {36}
+            questionsDone = {0}
+          />
+          <Topic topicName = "Array"
+            totalQuestions = {36}
+            questionsDone = {0}
+          />
+          <Topic topicName = "Array"
+            totalQuestions = {36}
+            questionsDone = {0}
+          />
+          <Topic topicName = "Array"
+            totalQuestions = {36}
+            questionsDone = {0}
+          />
+          <Topic topicName = "Array"
+            totalQuestions = {36}
+            questionsDone = {0}
+          />
+        </>
       </TopicContainer>
     </>
   );
