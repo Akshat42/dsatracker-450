@@ -1,23 +1,26 @@
-// import * as trackerData from '../data/tracker.json';
+import {dsaArchive} from '../data/tracker';
 
 export function indexDbInit() {
   if (!window.indexedDB) {
-    throw new Error('Browser does not support indexDB :(');
-  } else {
-    const request: IDBOpenDBRequest = indexedDB.open('TrackerDatabase', 3);
-    request.onerror = () => {
-      throw new Error('Cannot establish connection');
-    };
-    request.onsuccess = (event) => {
-      console.log('connection success!', request.result);
-      // const db: IDBDatabase = request.result;
-      // const objStore =db.createObjectStore('archive', {autoIncrement: true});
-      // console.log(trackerData.Sheet);
-    //   trackerData.Sheet.forEach((section:any) => {
-    //     objStore.add(section);
-    //   });
-    };
+    console.log('Your browser doesn\'t support a stable version of IndexedDB');
+    return false;
   }
+  const request: IDBOpenDBRequest = window.indexedDB.open('MyTestDatabase', 3);
+  request.onerror = (event) => {
+    console.log(request.error);
+    return false;
+  };
+
+  request.onsuccess = () => {
+    return true;
+  };
+
+  request.onupgradeneeded = (event) => {
+    const db = request.result;
+    const objectStore = db.createObjectStore('archive', {autoIncrement: true});
+    dsaArchive.forEach((questionData) => {
+      objectStore.add(questionData);
+    });
+    return true;
+  };
 }
-
-
