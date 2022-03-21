@@ -1,12 +1,13 @@
-import {useContext} from 'react';
 import GlobalProgress from '../../components/GlobalProgress/GlobalProgress';
 import Topic from '../../components/Topic/Topic';
 import TopicContainer from '../../components/TopicContainer/TopicContainer';
-import DbContext from '../../store/db-context';
+import {TopicSet} from '../../models/TopicSet';
 
-function Home() {
-  const db = useContext(DbContext);
-  console.log(db);
+type homeProps = {
+  topics: TopicSet[]
+}
+
+const Home: React.FC<homeProps> = (props) => {
   return (
     <>
       <GlobalProgress />
@@ -68,6 +69,6 @@ function Home() {
       </TopicContainer>
     </>
   );
-}
+};
 
 export default Home;

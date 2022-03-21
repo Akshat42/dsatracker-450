@@ -1,28 +1,24 @@
 // import {useEffect, useState} from 'react';
-import {indexDbInit} from '../../service/database';
+import {getAllData} from '../../service/database';
 import {Route, Routes} from 'react-router-dom';
 import Home from '../../pages/Home/Home';
 import PageNotFound from '../../pages/PageNotFound/PageNotFound';
-import DbContext from '../../store/db-context';
+import {TopicSet} from '../../models/TopicSet';
+import {useState} from 'react';
 
 function DSATracker() {
-  // const [isInitDb, setIsInitDb] = useState(false);
-  // function initializeDatabase(): void {
-  //   const isInit = indexDbInit();
-  //   console.log(isInit);
-  //   // setIsInitDb(isInit);
-  // }
-  const db = indexDbInit();
-
+  const [hasData, setHasData] = useState(false);
+  getAllData().then((data: TopicSet[]) => {
+    console.log(data);
+    setHasData(true);
+  });
   return (
     <div className="App">
       <h1>450 DSA Tracker</h1>
-      <DbContext.Provider value={db}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="*" element={<PageNotFound />} />
-        </Routes>
-      </DbContext.Provider>
+      <Routes>
+        <Route path="/" element={<Home/>} />
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
     </div>
   );
 }

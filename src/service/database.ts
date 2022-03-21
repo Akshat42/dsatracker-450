@@ -1,10 +1,13 @@
 import dsaArchive from '../data/tracker';
 // @ts-ignore
 import Localbase from 'localbase';
+import {TopicSet} from '../models/TopicSet';
 
 
 export function getDBPointer() {
-  return new Localbase('db');
+  const db = new Localbase('db');
+  db.config.debug = false;
+  return db;
 }
 
 export function indexDbInit():any {
@@ -17,4 +20,9 @@ export function indexDbInit():any {
     db.collection('archive')
         .add(ele, ele.topicName.toLowerCase().replaceAll(' ', '_'));
   });
+}
+
+export async function getAllData(): Promise<TopicSet[]> {
+  const db = getDBPointer();
+  return await db.collection('archive').get();
 }
