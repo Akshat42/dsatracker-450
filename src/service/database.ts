@@ -1,26 +1,19 @@
 import {dsaArchive} from '../data/tracker';
+// @ts-ignore
+import Localbase from 'localbase';
 
-export function indexDbInit() {
+
+export function getDBPointer() {
+  return new Localbase('db');
+}
+
+export function indexDbInit():any {
   if (!window.indexedDB) {
     console.log('Your browser doesn\'t support a stable version of IndexedDB');
-    return false;
+    return null;
   }
-  const request: IDBOpenDBRequest = window.indexedDB.open('MyTestDatabase', 3);
-  request.onerror = (event) => {
-    console.log(request.error);
-    return false;
-  };
-
-  request.onsuccess = () => {
-    return true;
-  };
-
-  request.onupgradeneeded = (event) => {
-    const db = request.result;
-    const objectStore = db.createObjectStore('archive', {autoIncrement: true});
-    dsaArchive.forEach((questionData) => {
-      objectStore.add(questionData);
-    });
-    return true;
-  };
+  const db = getDBPointer();
+  dsaArchive.forEach((ele) => {
+    db.collection('archive').add(ele);
+  });
 }
