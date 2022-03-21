@@ -1,4 +1,4 @@
-import {dsaArchive} from '../data/tracker';
+import dsaArchive from '../data/tracker';
 // @ts-ignore
 import Localbase from 'localbase';
 
@@ -14,6 +14,7 @@ export function indexDbInit():any {
   }
   const db = getDBPointer();
   dsaArchive.forEach((ele) => {
-    db.collection('archive').add(ele);
+    db.collection('archive')
+        .add(ele, ele.topicName.toLowerCase().replaceAll(' ', '_'));
   });
 }
