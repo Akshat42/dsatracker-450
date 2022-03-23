@@ -24,5 +24,5 @@ export function indexDbInit():any {
 
 export async function getAllData(): Promise<TopicSet[]> {
   const db = getDBPointer();
-  return await db.collection('archive').get();
+  return db.collection('archive').get();
 }

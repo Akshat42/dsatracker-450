@@ -1,70 +1,51 @@
+import {useEffect, useState} from 'react';
 import GlobalProgress from '../../components/GlobalProgress/GlobalProgress';
 import Topic from '../../components/Topic/Topic';
 import TopicContainer from '../../components/TopicContainer/TopicContainer';
+import CardData from '../../models/CardData';
 import {TopicSet} from '../../models/TopicSet';
+import {getAllData} from '../../service/database';
 
-type homeProps = {
-  topics: TopicSet[]
-}
+const Home: React.FC = () => {
+  const [data, setData] = useState<CardData[]>([]);
 
-const Home: React.FC<homeProps> = (props) => {
+  function mapCardData(topic: TopicSet): CardData {
+    return {
+      topicName: topic.topicName,
+      started: topic.started,
+      totalQuestions: topic.questions.length,
+      doneQuestions: topic.doneQuestions,
+    };
+  }
+
+  async function retriveAllData() {
+    const data = await getAllData();
+    const cardData = data.map(mapCardData);
+    setData(cardData);
+  }
+
+  useEffect(() => {
+    retriveAllData();
+  }, []);
+
+  const generateCards = () => {
+    return data.map((card) => {
+      return (
+        <Topic
+          key={card.topicName}
+          topicName={card.topicName}
+          totalQuestions = {card.totalQuestions}
+          questionsDone = {card.doneQuestions} />
+      );
+    });
+  };
+
   return (
     <>
       <GlobalProgress />
       <TopicContainer>
         <>
-          <Topic topicName = "Array"
-            totalQuestions = {36}
-            questionsDone = {0}
-          />
-          <Topic topicName = "Array"
-            totalQuestions = {36}
-            questionsDone = {0}
-          />
-          <Topic topicName = "Array"
-            totalQuestions = {36}
-            questionsDone = {0}
-          />
-          <Topic topicName = "Array"
-            totalQuestions = {36}
-            questionsDone = {0}
-          />
-          <Topic topicName = "Array"
-            totalQuestions = {36}
-            questionsDone = {0}
-          />
-          <Topic topicName = "Array"
-            totalQuestions = {36}
-            questionsDone = {0}
-          />
-          <Topic topicName = "Array"
-            totalQuestions = {36}
-            questionsDone = {0}
-          />
-          <Topic topicName = "Array"
-            totalQuestions = {36}
-            questionsDone = {0}
-          />
-          <Topic topicName = "Array"
-            totalQuestions = {36}
-            questionsDone = {0}
-          />
-          <Topic topicName = "Array"
-            totalQuestions = {36}
-            questionsDone = {0}
-          />
-          <Topic topicName = "Array"
-            totalQuestions = {36}
-            questionsDone = {0}
-          />
-          <Topic topicName = "Array"
-            totalQuestions = {36}
-            questionsDone = {0}
-          />
-          <Topic topicName = "Array"
-            totalQuestions = {36}
-            questionsDone = {0}
-          />
+          {generateCards()}
         </>
       </TopicContainer>
     </>
