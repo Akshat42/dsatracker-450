@@ -1,11 +1,24 @@
 .topic-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
     gap: 2%;
     width: 70vw;
     margin: auto;
     height: 63vh;
     overflow: auto;
     padding: 3%;
+    max-width: 1440px;
 }
+
+@media (min-width: 768px) {
+    .topic-container {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .topic-container {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+    }
+}   
