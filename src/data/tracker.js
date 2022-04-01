@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 export default [
   {
+    id: 'array',
     topicName: 'Array',
     position: 0,
     started: false,
@@ -297,6 +298,7 @@ export default [
     ],
   },
   {
+    id: 'matrix',
     topicName: 'Matrix',
     position: 1,
     started: false,
@@ -385,6 +387,7 @@ export default [
     ],
   },
   {
+    id: 'string',
     topicName: 'String',
     position: 2,
     started: false,
@@ -737,6 +740,7 @@ export default [
     ],
   },
   {
+    id: 'search_sort',
     topicName: 'Search & Sort',
     position: 3,
     started: false,
@@ -1033,6 +1037,7 @@ export default [
     ],
   },
   {
+    id: 'linked_list',
     topicName: 'Linked List',
     position: 4,
     started: false,
@@ -1329,6 +1334,7 @@ export default [
     ],
   },
   {
+    id: 'binary_trees',
     topicName: 'Binary Trees',
     position: 5,
     started: false,
@@ -1617,6 +1623,7 @@ export default [
     ],
   },
   {
+    id: 'bst',
     topicName: 'BST',
     position: 6,
     started: false,
@@ -1801,6 +1808,7 @@ export default [
     ],
   },
   {
+    id: 'greedy',
     topicName: 'Greedy',
     position: 7,
     started: false,
@@ -2089,6 +2097,7 @@ export default [
     ],
   },
   {
+    id: 'backtracking',
     topicName: 'BackTracking',
     position: 8,
     started: false,
@@ -2249,6 +2258,7 @@ export default [
     ],
   },
   {
+    id: 'stacks_queues',
     topicName: 'Stacks & Queues',
     position: 9,
     started: false,
@@ -2561,6 +2571,7 @@ export default [
     ],
   },
   {
+    id: 'heap',
     topicName: 'Heap',
     position: 10,
     started: false,
@@ -2713,6 +2724,7 @@ export default [
     ],
   },
   {
+    id: 'graph',
     topicName: 'Graph',
     position: 11,
     started: false,
@@ -3073,6 +3085,7 @@ export default [
     ],
   },
   {
+    id: 'trie',
     topicName: 'Trie',
     position: 12,
     started: false,
@@ -3129,6 +3142,7 @@ export default [
     ],
   },
   {
+    id: 'dp',
     topicName: 'Dynamic Programming',
     position: 13,
     started: false,
@@ -3617,6 +3631,7 @@ export default [
     ],
   },
   {
+    id: 'bit_manipulation',
     topicName: 'Bit Manipulation',
     position: 14,
     started: false,
