@@ -1,4 +1,5 @@
 export interface TopicSet {
+    id: string,
     topicName: string,
     started: boolean,
     position: number,

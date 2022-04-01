@@ -12,6 +12,9 @@
 .sub-heading {
     font-size: 1.1rem;
     margin-top: 7px;
+    max-width: 139px;
+    text-align: left;
+    margin: 0;
 }
 
 .m-t-0 {
@@ -24,4 +27,14 @@
     background-color: blue;
     border-radius: 20px;
     padding: 8px;
+    min-width: 89px;
+}
+
+.start-now-text {
+
+}
+
+a {
+    text-decoration: none;
+    color: black;
 }

@@ -11,6 +11,7 @@ const Home: React.FC = () => {
 
   function mapCardData(topic: TopicSet): CardData {
     return {
+      id: topic.id,
       topicName: topic.topicName,
       started: topic.started,
       totalQuestions: topic.questions.length,
@@ -32,7 +33,8 @@ const Home: React.FC = () => {
     return data.map((card) => {
       return (
         <Topic
-          key={card.topicName}
+          id={card.id}
+          key={card.id}
           topicName={card.topicName}
           totalQuestions = {card.totalQuestions}
           questionsDone = {card.doneQuestions} />
