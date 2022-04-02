@@ -27,13 +27,10 @@ export async function getAllData(): Promise<TopicSet[]> {
   return db.collection('archive').get();
 }
 
-export async function getDataByTopic(topicId:string | undefined) {
-  if (topicId) {
-    const db = getDBPointer();
-    db.collection('archive').doc({id: topicId}).get().then((data: any) => {
-      console.log(data);
-    });
-  } else {
-    console.error('somthing went wrong!');
-  }
+// eslint-disable-next-line max-len
+export async function getDataByTopic(topicId:string | undefined): Promise<TopicSet> {
+  const db = getDBPointer();
+  return db.collection('archive')
+      .doc({id: topicId})
+      .get();
 }

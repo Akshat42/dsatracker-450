@@ -1,23 +1,10 @@
-import {useEffect} from 'react';
-import {useParams} from 'react-router-dom';
-import {getDataByTopic} from '../../service/database';
+import QuestionTable from '../../components/QuestionTable/QuestionTable';
 
-type paramType = {
-  id: string
-}
+
 const TopicPage: React.FC = () => {
-  const {id} = useParams<paramType>();
-  console.log();
-  useEffect(()=> {
-    getDataByTopic(id);
-  });
-  return <table>
-    <thead>
-      <td>Done?</td>
-      <td>Q-Id</td>
-      <td>Questions</td>
-    </thead>
-  </table>;
+  return (
+    <QuestionTable />
+  );
 };
 
 export default TopicPage;
