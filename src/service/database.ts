@@ -34,3 +34,17 @@ export async function getDataByTopic(topicId:string | undefined): Promise<TopicS
       .doc({id: topicId})
       .get();
 }
+
+export async function markQuestion(topicId: string, questionIndex: number) {
+  const db = getDBPointer();
+  db.collection('archive')
+      .doc({id: topicId})
+      .get().then( (data: TopicSet) => {
+        data.questions.forEach((question, index) => {
+          if (index === questionIndex) {
+            question.Done = !question.Done;
+          }
+        });
+        db.collection('archive').doc(topicId).update(data);
+      });
+}
