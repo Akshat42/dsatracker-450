@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import {TopicSet} from '../../models/TopicSet';
 import {getDataByTopic} from '../../service/database';
+import QuestionRow from '../QuestionRow/QuestionRow';
 import classes from './QuestionTable.module.css';
 
 type paramType = {
@@ -30,23 +31,19 @@ const QuestionTable: React.FC = () => {
       </tr>
     </thead>
     <tbody>
-      {tableData?.questions.map((question, index) => {
-        return (
-          <tr key = {question.Problem}>
-            <td></td>
-            <td>{index + 1}</td>
-            <td>
-              <a
-                href={question.URL}
-                target='_blank'
-                rel="noopener noreferrer"
-              >
-                {question.Problem}
-              </a>
-            </td>
-          </tr>
-        );
-      })}
+      {
+        tableData?.questions.map((question, index) => {
+          console.log(question);
+          return (
+            <QuestionRow
+              key={question.Problem}
+              Done={question.Done}
+              Problem={question.Problem}
+              id = {index+1}
+              URL = {question.URL} />
+          );
+        })
+      }
     </tbody>
   </table>
   );
