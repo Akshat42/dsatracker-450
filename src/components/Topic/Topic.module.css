@@ -15,6 +15,7 @@
     max-width: 139px;
     text-align: left;
     margin: 0;
+    letter-spacing: 1px;
 }
 
 .m-t-0 {
@@ -28,10 +29,6 @@
     border-radius: 20px;
     padding: 8px;
     min-width: 89px;
-}
-
-.start-now-text {
-
 }
 
 a {
