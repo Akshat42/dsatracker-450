@@ -10,7 +10,7 @@ type paramType = {
 }
 
 const QuestionTable: React.FC = () => {
-  const {id} = useParams<paramType>();
+  const {id} = useParams<keyof paramType>() as paramType;
   const [tableData, setTableData] = useState<TopicSet>();
 
   async function retriveTopicDataByid(id:string | undefined) {
@@ -33,9 +33,9 @@ const QuestionTable: React.FC = () => {
     <tbody>
       {
         tableData?.questions.map((question, index) => {
-          console.log(question);
           return (
             <QuestionRow
+              topicId = {id}
               key={question.Problem}
               Done={question.Done}
               Problem={question.Problem}

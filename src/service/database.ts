@@ -10,13 +10,15 @@ export function getDBPointer() {
   return db;
 }
 
-export function indexDbInit():any {
+export async function indexDbInit() {
+  console.log('creating Db');
   if (!window.indexedDB) {
     console.log('Your browser doesn\'t support a stable version of IndexedDB');
     return null;
   }
   const db = getDBPointer();
-  dsaArchive.forEach((ele) => {
+  console.log(await db.collection('archive').get());
+  dsaArchive.forEach(async (ele) => {
     db.collection('archive')
         .add(ele, ele.id);
   });
@@ -35,11 +37,27 @@ export async function getDataByTopic(topicId:string | undefined): Promise<TopicS
       .get();
 }
 
-export async function markQuestion(topicId: string, questionIndex: number) {
+export async function markQuestionDone(topicId: string, questionIndex: number) {
   const db = getDBPointer();
   db.collection('archive')
-      .doc({id: topicId})
+      .doc(topicId)
       .get().then( (data: TopicSet) => {
+        data.doneQuestions++;
+        data.questions.forEach((question, index) => {
+          if (index === questionIndex) {
+            question.Done = !question.Done;
+          }
+        });
+        db.collection('archive').doc(topicId).update(data);
+      });
+}
+
+export async function unmarkQuestion(topicId: string, questionIndex: number) {
+  const db = getDBPointer();
+  db.collection('archive')
+      .doc(topicId)
+      .get().then( (data: TopicSet) => {
+        data.doneQuestions--;
         data.questions.forEach((question, index) => {
           if (index === questionIndex) {
             question.Done = !question.Done;

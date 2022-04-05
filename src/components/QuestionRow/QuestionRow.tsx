@@ -1,16 +1,23 @@
+import {markQuestionDone, unmarkQuestion} from '../../service/database';
+
 type QuestionRowProps = {
   Problem: string;
   id: number;
   URL: string;
   Done: boolean;
+  topicId: string;
 }
 
 
 const QuestionRow = (props: QuestionRowProps) => {
-  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleCheckboxChange = async (
+      event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
     const action = event.target.checked;
-    if (action) {
-      //  markQuestionDone();
+    if (action === true) {
+      await markQuestionDone(props.topicId, props.id - 1);
+    } else {
+      await unmarkQuestion(props.topicId, props.id-1);
     }
   };
   return (
