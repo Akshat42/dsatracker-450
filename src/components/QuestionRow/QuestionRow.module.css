@@ -1,0 +1,15 @@
+th, td {
+    padding: 15px;
+    border: 1px solid grey;
+}
+
+th {
+    letter-spacing: 1px;
+}
+td, td > a {
+    color: blue;
+}
+
+td {
+    font-weight:500;
+}

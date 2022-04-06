@@ -3,7 +3,7 @@ import {useParams} from 'react-router-dom';
 import {TopicSet} from '../../models/TopicSet';
 import {getDataByTopic} from '../../service/database';
 import QuestionRow from '../QuestionRow/QuestionRow';
-import classes from './QuestionTable.module.css';
+import './QuestionTable.module.css';
 
 type paramType = {
         id: string
@@ -27,30 +27,33 @@ const QuestionTable: React.FC = () => {
     retriveTopicDataByid(id);
   }, []);
 
-  const tableDataJSX = (<table className={classes.table}>
-    <thead>
-      <tr>
-        <th>Done</th>
-        <th>Q-Id</th>
-        <th>Question</th>
-      </tr>
-    </thead>
-    <tbody>
-      {
-        tableData?.questions.map((question, index) => {
-          return (
-            <QuestionRow
-              topicId = {id}
-              key={question.Problem}
-              Done={question.Done}
-              Problem={question.Problem}
-              id = {index+1}
-              URL = {question.URL} />
-          );
-        })
-      }
-    </tbody>
-  </table>
+  const tableDataJSX = (
+    <div className='table-container'>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Q-Id</th>
+            <th>Question</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            tableData?.questions.map((question, index) => {
+              return (
+                <QuestionRow
+                  topicId = {id}
+                  key={question.Problem}
+                  Done={question.Done}
+                  Problem={question.Problem}
+                  id = {index+1}
+                  URL = {question.URL} />
+              );
+            })
+          }
+        </tbody>
+      </table>
+    </div>
   );
   if (tableData) {
     return tableDataJSX;

@@ -1,5 +1,23 @@
+.table-container {
+    height: 63vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
 table {
-    width: 70%;
-    max-width: 1440px;
+    width: max-content;
+    height: 63vh;
+    overflow: auto;
+    /* max-width: 1440px;
+    margin: auto; */
+    table-layout: fixed;
+    font-size: 20px;
     margin: auto;
+    text-align: left;
+    border-collapse: collapse;
+    border: 1px solid grey;
+}
+
+th {
+    text-align: center;
 }

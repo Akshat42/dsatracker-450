@@ -19,7 +19,8 @@ body {
         "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: #EFF2F6;
+    background: rgb(174,194,221);
+    background: radial-gradient(circle, rgba(174,194,221,1) 0%, rgba(239,242,246,1) 100%);
 }
 
 h2 {
