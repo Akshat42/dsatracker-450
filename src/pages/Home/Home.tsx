@@ -1,5 +1,4 @@
 import {useEffect, useState} from 'react';
-import GlobalProgress from '../../components/GlobalProgress/GlobalProgress';
 import Topic from '../../components/Topic/Topic';
 import TopicContainer from '../../components/TopicContainer/TopicContainer';
 import CardData from '../../models/CardData';
@@ -44,7 +43,6 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <GlobalProgress />
       <TopicContainer>
         <>
           {generateCards()}

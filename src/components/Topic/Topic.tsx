@@ -1,5 +1,6 @@
 
 import {Link} from 'react-router-dom';
+import AppProgressBar from '../AppProgressBar/AppProgressBar';
 import classes from './Topic.module.css';
 
 type TopicProps = {
@@ -10,12 +11,16 @@ type TopicProps = {
 }
 
 function Topic(props: TopicProps) {
+  const donePercent = Math.floor(
+      (props.questionsDone/props.totalQuestions
+      ) * 100);
   return (
-    <Link to={props.id}>
-      <article
-        className={props.questionsDone ?
+    <Link id='topic' className={
+      props.questionsDone ?
       `${classes['started']} ${classes['card']}` :
-      `${classes['not-started']} ${classes['card']}` }>
+      `${classes['not-started']} ${classes['card']}` }
+    to={props.id}>
+      <article>
         <div className={classes['flex-pill']}>
           <h4 className={`${classes['sub-heading']}`}>{props.topicName}</h4>
           {props.questionsDone ?
@@ -39,7 +44,13 @@ function Topic(props: TopicProps) {
             'Not Yet Started' :
             `${props.totalQuestions - props.questionsDone} more to go!`
           }</p>
+          <p>{
+            props.questionsDone === 0 ?
+            null :
+            `${donePercent}% Done`
+          }</p>
         </div>
+        {props.questionsDone > 0 && <AppProgressBar donePercent={donePercent}/>}
       </article>
     </Link>
   );

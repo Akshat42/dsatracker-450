@@ -49,6 +49,8 @@ a {
     text-decoration: none;
     color: black;
     transition: 250ms;
+    min-height: 220px;
+    height: max-content;
 }
 
 a:hover {
@@ -57,7 +59,12 @@ a:hover {
 
 .left {
     text-align: left;
-    font-weight: 700;;
+    font-weight: 700;
+    color: darkslategrey
+}
+
+.left p:first-child {
+    font-style: italic;
 }
 
 @media (max-width: 390px) {

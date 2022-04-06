@@ -12,10 +12,15 @@ type paramType = {
 const QuestionTable: React.FC = () => {
   const {id} = useParams<keyof paramType>() as paramType;
   const [tableData, setTableData] = useState<TopicSet>();
+  const [topicNotFound, setTopicNotFound] = useState(true);
 
   async function retriveTopicDataByid(id:string | undefined) {
     const data = await getDataByTopic(id);
-    setTableData(data);
+    if (data) {
+      setTableData(data);
+    } else {
+      setTopicNotFound(true);
+    }
   }
 
   useEffect(()=> {
@@ -49,6 +54,8 @@ const QuestionTable: React.FC = () => {
   );
   if (tableData) {
     return tableDataJSX;
+  } else if (topicNotFound) {
+    return <h3>No Such Topic Found!</h3>;
   } else {
     return <p>Loading ...</p>;
   }
