@@ -7,8 +7,6 @@ function DSATracker() {
   return (
     <div className="App">
       <h1>450 DSA Tracker</h1>
-      <h2>Your Gateway to crack DSA</h2>
-      <h3>Start Solving</h3>
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/:id" element={<TopicPage />} />

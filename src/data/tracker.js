@@ -3720,4 +3720,3 @@ export default [
     ],
   },
 ];
-export const version = 100000016;

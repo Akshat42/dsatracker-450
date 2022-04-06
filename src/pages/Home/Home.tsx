@@ -1,12 +1,18 @@
 import {useEffect, useState} from 'react';
+import AppProgressBar from '../../components/AppProgressBar/AppProgressBar';
 import Topic from '../../components/Topic/Topic';
 import TopicContainer from '../../components/TopicContainer/TopicContainer';
 import CardData from '../../models/CardData';
+import {Stats} from '../../models/Stats';
 import {TopicSet} from '../../models/TopicSet';
-import {getAllData} from '../../service/database';
+import {getAllData, getStats} from '../../service/database';
+import styles from './Home.module.css';
+
+const TOTAL_QUESTIONS = 448;
 
 const Home: React.FC = () => {
   const [data, setData] = useState<CardData[]>([]);
+  const [stats, setStats] = useState<Stats>();
 
   function mapCardData(topic: TopicSet): CardData {
     return {
@@ -20,7 +26,9 @@ const Home: React.FC = () => {
 
   async function retriveAllData() {
     const data = await getAllData();
+    const stats = await getStats();
     const cardData = data.map(mapCardData);
+    setStats(stats);
     setData(cardData);
   }
 
@@ -43,6 +51,30 @@ const Home: React.FC = () => {
 
   return (
     <>
+      <div className={`${styles.normalWeight} ${styles.center}`}>
+        <h2>Your Gateway to crack DSA</h2>
+        {
+        stats?.totalDoneQuestions ?
+        <>
+          <h3>
+            {
+              `Total Questions Solved: 
+              ${stats.totalDoneQuestions}
+            (${
+                ((stats.totalDoneQuestions / TOTAL_QUESTIONS) * 100).toFixed(2)
+              }%)`
+            }
+          </h3><AppProgressBar
+            donePercent={
+              Number(
+                  ((stats.totalDoneQuestions / TOTAL_QUESTIONS) * 100)
+                      .toFixed(2),
+              )
+            }/>
+        </> :
+          <h3>Start Solving</h3>
+        }
+      </div>
       <TopicContainer>
         <>
           {generateCards()}
