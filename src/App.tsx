@@ -11,22 +11,30 @@ function App() {
   initDb();
 
   async function initDb() {
-    if (!window.indexedDB) {
-      console.log('Your browser doesn\'t' +
+    try {
+      if (!window.indexedDB) {
+        console.log('Your browser doesn\'t' +
       'support a stable version of IndexedDB');
-      return null;
-    }
-    const data = await db.collection('archive').get();
-    if (data.length === 0) {
-      dsaArchive.forEach((ele) => {
-        db.collection('archive')
-            .add(ele, ele.id);
-      });
-      setDataLoaded(true);
-    } else {
-      setDataLoaded(true);
+        return null;
+      }
+      const data = await db.collection('archive').get();
+      if (data.length === 0) {
+        dsaArchive.forEach((ele) => {
+          db.collection('archive')
+              .add(ele, ele.id);
+        });
+        await db.collection('stats')
+            .add({totalDoneQuestions: 0}, 'stats');
+        setDataLoaded(true);
+      } else {
+        setDataLoaded(true);
+      }
+    } catch (e: any) {
+      alert(e.message);
+      console.error(e);
     }
   }
+
   if (dataLoaded) {
     return <DSATracker />;
   } else {
