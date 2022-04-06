@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
 
+:root {
+    --lightGreen: #aad6b9;
+    --buttonBlue: blue;
+    --buttonGreen: green;
+}
+
 html {
     box-sizing: border-box;
     scroll-behavior: smooth;
@@ -13,6 +19,11 @@ body {
         "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background: #EFF2F6;
+}
+
+h2 {
+    font-size: 1.75rem;
 }
 
 *,

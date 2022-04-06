@@ -16,7 +16,7 @@
     }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
     .topic-container {
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(3, 1fr);

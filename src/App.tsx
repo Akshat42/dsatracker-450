@@ -1,4 +1,3 @@
-// import {useState} from 'react';
 import './App.css';
 import DSATracker from './components/DSATracker/DsaTracker';
 import {getDBPointer} from './service/database';
@@ -19,7 +18,6 @@ function App() {
     }
     const data = await db.collection('archive').get();
     if (data.length === 0) {
-      console.log('data base is not created, creating!');
       dsaArchive.forEach((ele) => {
         db.collection('archive')
             .add(ele, ele.id);
