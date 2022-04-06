@@ -1,15 +1,13 @@
 .table-container {
     height: 63vh;
-    overflow-y: auto;
+    overflow-y: scroll;
     overflow-x: hidden;
 }
 
 table {
-    width: max-content;
-    height: 63vh;
     overflow: auto;
-    /* max-width: 1440px;
-    margin: auto; */
+    max-width: 1440px;
+    margin: auto;
     table-layout: fixed;
     font-size: 20px;
     margin: auto;

@@ -3,7 +3,7 @@ import {useParams} from 'react-router-dom';
 import {TopicSet} from '../../models/TopicSet';
 import {getDataByTopic} from '../../service/database';
 import QuestionRow from '../QuestionRow/QuestionRow';
-import './QuestionTable.module.css';
+import style from './QuestionTable.module.css';
 
 type paramType = {
         id: string
@@ -28,7 +28,7 @@ const QuestionTable: React.FC = () => {
   }, []);
 
   const tableDataJSX = (
-    <div className='table-container'>
+    <div className={style['table-container']}>
       <table>
         <thead>
           <tr>
