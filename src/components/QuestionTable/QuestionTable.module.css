@@ -2,7 +2,7 @@
     height: 63vh;
     overflow-y: scroll;
     overflow-x: hidden;
-    width: 70vw;
+    width: 60%;
     margin: auto;
 }
 
@@ -16,6 +16,20 @@ table {
     text-align: left;
     border-collapse: collapse;
     border: 1px solid grey;
+    width: 100%;
+    overflow-wrap: break-word;
+}
+
+
+thead th:nth-child(1) {
+  width: 2%;
+}
+thead th:nth-child(2) {
+  width: 3%;
+}
+
+thead th:nth-child(3) {
+  width: 20%;
 }
 
 th {
@@ -47,4 +61,52 @@ div::-webkit-scrollbar-thumb {
 div::-webkit-scrollbar-track {
     border-radius: 10px;
     
+}
+
+@media (max-width: 1051px) {
+    thead th:nth-child(2) {
+        width: 4%;
+    }
+}
+
+@media (max-width: 822px) {
+    thead th:nth-child(2) {
+        width: 5%;
+    }
+    thead th:nth-child(1) {
+        width: 3%;
+    }
+}
+
+@media (max-width: 620px) {
+    thead th:nth-child(1) {
+        width: 4%;
+    }
+}
+
+@media (max-width: 523px) {
+    thead th:nth-child(2) {
+        width: 8%;
+    }
+    thead th:nth-child(1) {
+        width: 6%;
+    }
+}
+
+@media (max-width: 386px) {
+    thead th:nth-child(2) {
+        width: 9%;
+    }
+    thead th:nth-child(1) {
+        width: 7%;
+    }
+}
+
+@media (max-width: 330px) {
+    thead th:nth-child(2) {
+        width: 12%;
+    }
+    thead th:nth-child(1) {
+        width: 9%;
+    }
 }
