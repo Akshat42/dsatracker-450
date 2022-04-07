@@ -1,6 +1,6 @@
-import {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Link, useParams} from 'react-router-dom';
-import {TopicSet} from '../../models/TopicSet';
+import {Question, TopicSet} from '../../models/TopicSet';
 import {getDataByTopic} from '../../service/database';
 import QuestionRow from '../QuestionRow/QuestionRow';
 import style from './QuestionTable.module.css';
@@ -12,15 +12,24 @@ type paramType = {
 const QuestionTable: React.FC = () => {
   const {id} = useParams<keyof paramType>() as paramType;
   const [tableData, setTableData] = useState<TopicSet>();
+  const [tableRowData, setTableRowData] = useState<Question[]>();
   const [topicNotFound, setTopicNotFound] = useState(true);
 
   async function retriveTopicDataByid(id:string | undefined) {
     const data = await getDataByTopic(id);
     if (data) {
       setTableData(data);
+      setTableRowData(data.questions);
     } else {
       setTopicNotFound(true);
     }
+  }
+
+  function handleSearch(event: React.ChangeEvent<HTMLInputElement>) {
+    const key = event.target.value;
+    const searchResult =
+    tableData?.questions?.filter((question) => question.Problem.match(key));
+    setTableRowData(searchResult);
   }
 
   useEffect(()=> {
@@ -35,8 +44,15 @@ const QuestionTable: React.FC = () => {
           <span>/{tableData?.topicName}</span>
         </h3>
       </div>
+      <nav>
+        <button>Pick Random</button>
+        <input type='text'
+          placeholder="Search Question..."
+          onChange={handleSearch}/>
+        <span>0/10 Done</span>
+      </nav>
       <div className={style['table-container']}>
-        <table>
+        <table className={style.tableWidth}>
           <thead>
             <tr>
               <th></th>
@@ -45,7 +61,7 @@ const QuestionTable: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            {tableData?.questions.map((question, index) => {
+            {tableRowData?.map((question, index) => {
               return (
                 <QuestionRow
                   topicId={id}
