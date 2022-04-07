@@ -6,7 +6,7 @@ import TopicPage from '../../pages/TopicPage/TopicPage';
 function DSATracker() {
   return (
     <div className="App">
-      <h1>450 DSA Tracker</h1>
+      <h1 style={{fontSize: 50}}>450 DSA Tracker</h1>
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/:id" element={<TopicPage />} />

@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {useParams} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import {TopicSet} from '../../models/TopicSet';
 import {getDataByTopic} from '../../service/database';
 import QuestionRow from '../QuestionRow/QuestionRow';
@@ -28,32 +28,38 @@ const QuestionTable: React.FC = () => {
   }, []);
 
   const tableDataJSX = (
-    <div className={style['table-container']}>
-      <table>
-        <thead>
-          <tr>
-            <th></th>
-            <th>Q-Id</th>
-            <th>Question</th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            tableData?.questions.map((question, index) => {
+    <>
+      <div className={style.breadCrumb}>
+        <h3>
+          <Link to='/'>Topic</Link>
+          <span>/{tableData?.topicName}</span>
+        </h3>
+      </div>
+      <div className={style['table-container']}>
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Q-Id</th>
+              <th>Question</th>
+            </tr>
+          </thead>
+          <tbody>
+            {tableData?.questions.map((question, index) => {
               return (
                 <QuestionRow
-                  topicId = {id}
+                  topicId={id}
                   key={question.Problem}
                   Done={question.Done}
                   Problem={question.Problem}
-                  id = {index+1}
-                  URL = {question.URL} />
+                  id={index + 1}
+                  URL={question.URL} />
               );
-            })
-          }
-        </tbody>
-      </table>
-    </div>
+            })}
+          </tbody>
+        </table>
+      </div>
+    </>
   );
   if (tableData) {
     return tableDataJSX;
