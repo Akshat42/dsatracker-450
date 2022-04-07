@@ -26,7 +26,8 @@ function Topic(props: TopicProps) {
           {props.questionsDone ?
           <p
             className={`${classes['green']} ${classes['m-t-0']}
-                      ${classes['start-now']}`}>
+                      ${classes['start-now']}`
+            }>
             <span className={classes['start-now-text']}>Solve Now</span>
           </p>:
           <p
@@ -39,16 +40,20 @@ function Topic(props: TopicProps) {
         </div>
         <div className={classes.left}>
           <p>Total Questions: {props.totalQuestions}</p>
-          <p>{
+          <p>
+            {
             props.questionsDone === 0 ?
             'Not Yet Started' :
             `${props.totalQuestions - props.questionsDone} more to go!`
-          }</p>
-          <p>{
+            }
+          </p>
+          <p>
+            {
             props.questionsDone === 0 ?
             null :
             `${donePercent}% Done`
-          }</p>
+            }
+          </p>
         </div>
         {props.questionsDone > 0 && <AppProgressBar donePercent={donePercent}/>}
       </article>

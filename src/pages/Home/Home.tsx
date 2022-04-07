@@ -25,11 +25,8 @@ const Home: React.FC = () => {
   }
 
   async function retriveAllData() {
-    const data = await getAllData();
-    const stats = await getStats();
-    const cardData = data.map(mapCardData);
-    setStats(stats);
-    setData(cardData);
+    setStats(await getStats());
+    setData((await getAllData()).map(mapCardData));
   }
 
   useEffect(() => {
@@ -49,6 +46,10 @@ const Home: React.FC = () => {
     });
   };
 
+  function getCompletionValue(doneQuestions: number, totalQuestions: number) {
+    return Number(((doneQuestions / totalQuestions) * 100).toFixed(2));
+  }
+
   return (
     <>
       <div className={`${styles.normalWeight} ${styles.center}`}>
@@ -61,15 +62,12 @@ const Home: React.FC = () => {
               `Total Questions Solved: 
               ${stats.totalDoneQuestions}
             (${
-                ((stats.totalDoneQuestions / TOTAL_QUESTIONS) * 100).toFixed(2)
+                getCompletionValue(stats.totalDoneQuestions, TOTAL_QUESTIONS)
               }%)`
             }
           </h3><AppProgressBar
             donePercent={
-              Number(
-                  ((stats.totalDoneQuestions / TOTAL_QUESTIONS) * 100)
-                      .toFixed(2),
-              )
+              getCompletionValue(stats.totalDoneQuestions, TOTAL_QUESTIONS)
             }/>
         </> :
           <h3>Start Solving</h3>
