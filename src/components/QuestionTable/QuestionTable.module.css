@@ -2,6 +2,8 @@
     height: 63vh;
     overflow-y: scroll;
     overflow-x: hidden;
+    width: 70vw;
+    margin: auto;
 }
 
 table {
@@ -30,4 +32,19 @@ th {
 
 .breadCrumb h3 > a {
     color: blue;
+}
+
+div::-webkit-scrollbar {
+    width: 5px;
+    height: 6px;
+}
+
+div::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: gray;
+}
+
+div::-webkit-scrollbar-track {
+    border-radius: 10px;
+    
 }

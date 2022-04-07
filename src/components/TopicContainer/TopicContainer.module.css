@@ -9,6 +9,21 @@
     max-width: 1440px;
 }
 
+main::-webkit-scrollbar {
+    width: 5px;
+    height: 6px;
+}
+
+main::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: gray;
+}
+
+main::-webkit-scrollbar-track {
+    border-radius: 10px;
+    
+}
+
 @media (min-width: 768px) {
     .topic-container {
         grid-template-columns: repeat(2, 1fr);
