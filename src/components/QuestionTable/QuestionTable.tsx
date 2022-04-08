@@ -3,6 +3,7 @@ import {Link, useParams} from 'react-router-dom';
 import {Question, TopicSet} from '../../models/TopicSet';
 import {getDataByTopic} from '../../service/database';
 import QuestionRow from '../QuestionRow/QuestionRow';
+import SearchBar from '../SearchBar/SearchBar';
 import style from './QuestionTable.module.css';
 
 type paramType = {
@@ -12,7 +13,7 @@ type paramType = {
 const QuestionTable: React.FC = () => {
   const {id} = useParams<keyof paramType>() as paramType;
   const [tableData, setTableData] = useState<TopicSet>();
-  const [tableRowData, setTableRowData] = useState<Question[]>();
+  const [tableRowData, setTableRowData] = useState<Question[]>([]);
   const [topicNotFound, setTopicNotFound] = useState(true);
 
   async function retriveTopicDataByid(id:string | undefined) {
@@ -25,11 +26,24 @@ const QuestionTable: React.FC = () => {
     }
   }
 
-  function handleSearch(event: React.ChangeEvent<HTMLInputElement>) {
-    const key = event.target.value;
-    const searchResult =
-    tableData?.questions?.filter((question) => question.Problem.match(key));
-    setTableRowData(searchResult);
+  function handleSearch(key: string) {
+    if (tableData) {
+      const searchResult =
+      tableData.questions.filter(
+          (question) => question.Problem.toLowerCase().match(key),
+      );
+      setTableRowData(searchResult);
+    }
+  }
+
+  function pickRandomHandler() {
+    const question = getRandomQuestionByTopic(tableRowData);
+    const win = window.open(question.URL, '_blank');
+    win?.focus();
+  }
+
+  function getRandomQuestionByTopic(tableRowData: Question[]): Question {
+    return tableRowData[Math.floor(Math.random() * tableRowData.length)];
   }
 
   useEffect(()=> {
@@ -45,11 +59,19 @@ const QuestionTable: React.FC = () => {
         </h3>
       </div>
       <nav>
-        <button>Pick Random</button>
-        <input type='text'
-          placeholder="Search Question..."
-          onChange={handleSearch}/>
-        <span>0/10 Done</span>
+        <ul>
+          <li>
+            <button onClick={pickRandomHandler}>Pick Random</button>
+          </li>
+          <li>
+            <SearchBar searchHandler={handleSearch} />
+          </li>
+          <li>
+            <span>
+              {`${tableData?.doneQuestions }/${tableData?.questions.length}`}
+            </span>
+          </li>
+        </ul>
       </nav>
       <div className={style['table-container']}>
         <table className={style.tableWidth}>
