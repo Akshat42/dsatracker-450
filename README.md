@@ -1,6 +1,6 @@
 A curated list of Algorithmic problems to track and crack DSA interviews. Questions are characterized by topics for ease of access. User can track their preparation topic-wise by marking/unmarking them.
 
-The project is hosted [here](http://localhost:3000).
+The project is hosted [here](https://dsa-tracker-882e6.web.app).
 
 ## Available Scripts
 
