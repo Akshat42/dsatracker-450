@@ -14,15 +14,28 @@ type paramType = {
 
 const QuestionTable: React.FC = () => {
   const {id} = useParams<keyof paramType>() as paramType;
-  const [tableData, setTableData] = useState<TopicSet>();
+  const [tableData, setTableData] = useState<TopicSet>({
+    id: '',
+    topicName: '',
+    started: false,
+    position: 0,
+    doneQuestions: 0,
+    questions: [],
+  });
   const [tableRowData, setTableRowData] = useState<Question[]>([]);
   const [topicNotFound, setTopicNotFound] = useState(true);
+  const [doneQustions, setDoneQuestions] = useState(tableData.doneQuestions);
 
-  async function retriveTopicDataByid(id:string | undefined) {
+  useEffect(()=> {
+    retriveTopicDataByid(id);
+  }, []);
+
+  async function retriveTopicDataByid(id:string) {
     const data = await getDataByTopic(id);
     if (data) {
       setTableData(data);
       setTableRowData(data.questions);
+      setDoneQuestions(data.doneQuestions);
     } else {
       setTopicNotFound(true);
     }
@@ -48,10 +61,6 @@ const QuestionTable: React.FC = () => {
     return tableRowData[Math.floor(Math.random() * tableRowData.length)];
   }
 
-  useEffect(()=> {
-    retriveTopicDataByid(id);
-  }, []);
-
   const tableDataJSX = (
     <>
       <div className={style.breadCrumb}>
@@ -72,7 +81,7 @@ const QuestionTable: React.FC = () => {
         </li>
         <li className={style.flex_3}>
           <span>
-            {`${tableData?.doneQuestions }/${tableData?.questions.length}`}
+            {`${doneQustions}/${tableData?.questions.length}`}
           </span>
         </li>
       </SearchBarStatsContainer>
@@ -89,6 +98,7 @@ const QuestionTable: React.FC = () => {
             {tableRowData?.map((question, index) => {
               return (
                 <QuestionRow
+                  setDoneQuestions = {setDoneQuestions}
                   topicId={id}
                   key={question.Problem}
                   Done={question.Done}

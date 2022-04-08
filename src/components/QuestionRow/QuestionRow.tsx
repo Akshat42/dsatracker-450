@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {Dispatch, SetStateAction, useState} from 'react';
 import {markQuestionDone, unmarkQuestion} from '../../service/database';
 import './QuestionRow.css';
 
@@ -8,6 +8,7 @@ type QuestionRowProps = {
   URL: string;
   Done: boolean;
   topicId: string;
+  setDoneQuestions: Dispatch<SetStateAction<number>>
 }
 
 
@@ -20,9 +21,11 @@ const QuestionRow = (props: QuestionRowProps) => {
     if (action === true) {
       await markQuestionDone(props.topicId, props.id - 1);
       setIsDone(true);
+      props.setDoneQuestions((prev) => prev! + 1);
     } else {
       await unmarkQuestion(props.topicId, props.id-1);
       setIsDone(false);
+      props.setDoneQuestions((prev) => prev! - 1);
     }
   };
   return (
