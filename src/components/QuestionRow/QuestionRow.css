@@ -13,3 +13,7 @@ td, td > a {
 td {
     font-weight:500;
 }
+
+.green {
+    background-color: var(--lightGreen);
+}

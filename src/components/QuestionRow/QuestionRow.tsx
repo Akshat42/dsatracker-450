@@ -1,5 +1,6 @@
+import {useState} from 'react';
 import {markQuestionDone, unmarkQuestion} from '../../service/database';
-import './QuestionRow.module.css';
+import './QuestionRow.css';
 
 type QuestionRowProps = {
   Problem: string;
@@ -11,18 +12,21 @@ type QuestionRowProps = {
 
 
 const QuestionRow = (props: QuestionRowProps) => {
+  const [isDone, setIsDone] = useState(props.Done);
   const handleCheckboxChange = async (
       event: React.ChangeEvent<HTMLInputElement>,
   ) => {
     const action = event.target.checked;
     if (action === true) {
       await markQuestionDone(props.topicId, props.id - 1);
+      setIsDone(true);
     } else {
       await unmarkQuestion(props.topicId, props.id-1);
+      setIsDone(false);
     }
   };
   return (
-    <tr key = {props.Problem}>
+    <tr key = {props.Problem} className = {isDone ? 'green' : ''}>
       <td>
         <input
           type='checkbox'
