@@ -104,11 +104,21 @@ div::-webkit-scrollbar-track {
     thead th:nth-child(1) {
         width: 3%;
     }
+    .table-container {
+    height: 63vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 80%;
+    margin: auto;
+    }
 }
 
 @media (max-width: 620px) {
     thead th:nth-child(1) {
         width: 4%;
+    }
+    table {
+        width: 90%;
     }
 }
 
@@ -119,6 +129,13 @@ div::-webkit-scrollbar-track {
     thead th:nth-child(1) {
         width: 6%;
     }
+    .table-container {
+    height: 63vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 90%;
+    margin: auto;
+    }
 }
 
 @media (max-width: 386px) {
@@ -127,6 +144,13 @@ div::-webkit-scrollbar-track {
     }
     thead th:nth-child(1) {
         width: 7%;
+    }
+    .table-container {
+    height: 63vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 90%;
+    margin: auto;
     }
 }
 
@@ -137,4 +161,11 @@ div::-webkit-scrollbar-track {
     thead th:nth-child(1) {
         width: 9%;
     }
+    .table-container {
+    height: 63vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 90%;
+    margin: auto;
+}
 }
