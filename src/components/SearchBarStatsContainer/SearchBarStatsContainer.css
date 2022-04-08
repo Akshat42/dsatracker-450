@@ -10,3 +10,33 @@
     padding: 0;
     border: 1px solid gray;
 }
+
+@media (max-width: 822px) {
+    .nav-container {
+        width: 80%;
+    }
+}
+
+@media (max-width: 620px) {
+    .nav-container {
+        width: 90%;
+    }
+}
+
+@media (max-width: 523px) {
+    .nav-container {
+        width: 90%;
+    }
+}
+
+@media (max-width: 386px) {
+    .table-container {
+        width: 90%;
+    }
+}
+
+@media (max-width: 330px) {
+    .table-container {
+        width: 90%;
+    }
+}
