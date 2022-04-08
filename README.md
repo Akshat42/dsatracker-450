@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+A curated list of Algorithmic problems to track and crack DSA interviews. Questions are characterized by topics for ease of access. User can track their preparation topic-wise by marking/unmarking them.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The project is hosted [here](http://localhost:3000).
 
 ## Available Scripts
 
