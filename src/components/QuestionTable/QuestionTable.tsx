@@ -4,6 +4,8 @@ import {Question, TopicSet} from '../../models/TopicSet';
 import {getDataByTopic} from '../../service/database';
 import QuestionRow from '../QuestionRow/QuestionRow';
 import SearchBar from '../SearchBar/SearchBar';
+import SearchBarStatsContainer
+  from '../SearchBarStatsContainer/SearchBarStatsContainer';
 import style from './QuestionTable.module.css';
 
 type paramType = {
@@ -58,21 +60,22 @@ const QuestionTable: React.FC = () => {
           <span>/{tableData?.topicName}</span>
         </h3>
       </div>
-      <nav>
-        <ul>
-          <li>
-            <button onClick={pickRandomHandler}>Pick Random</button>
-          </li>
-          <li>
-            <SearchBar searchHandler={handleSearch} />
-          </li>
-          <li>
-            <span>
-              {`${tableData?.doneQuestions }/${tableData?.questions.length}`}
-            </span>
-          </li>
-        </ul>
-      </nav>
+      <SearchBarStatsContainer>
+        <li className={style.flex_1}>
+          <button
+            className={style.random_button}
+            onClick={pickRandomHandler}>Pick Random
+          </button>
+        </li>
+        <li className={style.flex_2}>
+          <SearchBar searchHandler={handleSearch} />
+        </li>
+        <li className={style.flex_3}>
+          <span>
+            {`${tableData?.doneQuestions }/${tableData?.questions.length}`}
+          </span>
+        </li>
+      </SearchBarStatsContainer>
       <div className={style['table-container']}>
         <table className={style.tableWidth}>
           <thead>

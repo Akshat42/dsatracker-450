@@ -48,6 +48,34 @@ th {
     color: blue;
 }
 
+.flex_2 {
+    flex-grow: 1;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+}
+
+.flex_1 {
+    width: 142px;
+}
+
+.flex_3 {
+    width: 142px;
+    background: var(--lightGreen);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+}
+
+.random_button {
+    width: 100%;
+    font-size: 18px;
+    border: 1px blue;
+    background: none;
+    padding: 10px;
+    color: blue;
+}
+
 div::-webkit-scrollbar {
     width: 5px;
     height: 6px;

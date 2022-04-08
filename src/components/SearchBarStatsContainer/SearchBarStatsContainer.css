@@ -1,0 +1,12 @@
+.nav-container {
+    width: 60%;
+    margin: auto;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    padding: 0;
+    border: 1px solid gray;
+}

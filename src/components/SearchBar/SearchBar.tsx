@@ -1,4 +1,4 @@
-import React from 'react';
+import './SearchBar.css';
 
 type SearchBarProps = {
     searchHandler : (key: string) => void,
@@ -9,6 +9,7 @@ function SearchBar(props: SearchBarProps): React.ReactElement {
     props.searchHandler(event.target.value);
   }
   return <input
+    className='search-input'
     type='text'
     placeholder="Search Question..."
     onChange={handleSearch}/>;
