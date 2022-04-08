@@ -74,6 +74,7 @@ th {
     background: none;
     padding: 10px;
     color: blue;
+    cursor: pointer;
 }
 
 div::-webkit-scrollbar {
