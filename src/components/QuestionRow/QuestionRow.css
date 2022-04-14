@@ -17,3 +17,10 @@ td {
 .green {
     background-color: var(--lightGreen);
 }
+
+.notes-icon {
+    float: right;
+    max-width: 100%;
+    min-width: 1%;
+    cursor: pointer;
+}

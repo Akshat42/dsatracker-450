@@ -1,5 +1,6 @@
 import {Dispatch, SetStateAction, useState} from 'react';
 import {markQuestionDone, unmarkQuestion} from '../../service/database';
+import notesIcon from '../../assets/icons/notes_icon.svg';
 import './QuestionRow.css';
 
 type QuestionRowProps = {
@@ -45,6 +46,7 @@ const QuestionRow = (props: QuestionRowProps) => {
         >
           {props.Problem}
         </a>
+        <img src={notesIcon} alt="take a note" className='notes-icon'/>
       </td>
     </tr>
   );
