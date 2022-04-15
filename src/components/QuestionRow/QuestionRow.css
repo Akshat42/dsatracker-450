@@ -24,3 +24,7 @@ td {
     min-width: 1%;
     cursor: pointer;
 }
+
+.hasNotes {
+    filter: invert(20%) sepia(59%) saturate(6345%) hue-rotate(109deg) brightness(97%) contrast(102%);
+}

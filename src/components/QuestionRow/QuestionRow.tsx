@@ -86,7 +86,7 @@ const QuestionRow = (props: QuestionRowProps) => {
             <img
               src={notesIcon}
               alt="take a note"
-              className='notes-icon'/>
+              className={notesState ? 'notes-icon hasNotes' : 'notes-icon'}/>
           </Link>
         </td>
       </tr>

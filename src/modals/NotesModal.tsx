@@ -18,14 +18,22 @@ function NotesModal(props: NotesModalProps) {
   }
   return (
     <main className={styles.notes_modal}>
-      <h3>{props.heading}</h3>
-      <textarea ref={textAreaRef} defaultValue={props.notes}/>
-      <div>
+      <h3 className={styles.title}>{props.heading}</h3>
+      <textarea
+        ref={textAreaRef}
+        defaultValue={props.notes}
+        className={styles.textarea}/>
+      <div className={styles.button_flex}>
         <button
+          className={styles.save + ' ' + styles.button}
           onClick={handleSave}>
           Save
         </button>
-        <button onClick={props.closeHandler}>Close</button>
+        <button
+          className={styles.close + ' ' + styles.button}
+          onClick={props.closeHandler}>
+          Close
+        </button>
       </div>
     </main>
   );
