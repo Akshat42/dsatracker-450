@@ -1,0 +1,47 @@
+.notes_modal {
+    background: #fff;
+    position: absolute;
+    display: block;
+    width: 50%;
+    padding: 2% 1%;
+    top: 30%;
+    right: 25%;
+    border: 1px solid #000;
+    border-radius: 0.5em;
+}
+
+.title {
+    margin-top: 0;
+    border: 1px solid black;
+    border-radius: inherit;
+    padding: 0.5rem;
+}
+
+.textarea {
+    height: 10em;
+    width: 100%;
+    border: 2px solid var(--buttonGreen);
+    border-radius: inherit;
+    padding: 1%;
+    resize: none;
+}
+
+.button_flex {
+    display: flex;
+    gap: 1%;
+    padding-top: 1%;
+}
+
+.button {
+    font-family: inherit;
+    width: 5rem;
+    cursor: pointer;
+    padding: 1%
+}
+.save {
+    background-color: var(--buttonGreen);
+}
+
+.close {
+    background-color: var(--buttonRed);
+}

@@ -98,6 +98,7 @@ const QuestionTable: React.FC = () => {
             {tableRowData?.map((question, index) => {
               return (
                 <QuestionRow
+                  notes = {question.Notes}
                   setDoneQuestions = {setDoneQuestions}
                   topicId={id}
                   key={question.Problem}
