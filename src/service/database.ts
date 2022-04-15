@@ -83,3 +83,19 @@ export async function getStats(): Promise<Stats> {
   const db = getDBPointer();
   return db.collection('stats').doc('stats').get();
 }
+
+export async function saveNotesToDb(
+    topicId:string,
+    questionIndex: number,
+    notes:string) {
+  const db = getDBPointer();
+  await db.collection('archive').doc(topicId)
+      .get().then(async (data: TopicSet) => {
+        data.questions.forEach((question, index) => {
+          if (index === questionIndex) {
+            question.Notes = notes;
+          }
+        });
+        await db.collection('archive').doc(topicId).update(data);
+      });
+}

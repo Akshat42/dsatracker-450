@@ -1,5 +1,9 @@
 import {Dispatch, SetStateAction, useState} from 'react';
-import {markQuestionDone, unmarkQuestion} from '../../service/database';
+import {
+  markQuestionDone,
+  saveNotesToDb,
+  unmarkQuestion,
+} from '../../service/database';
 import notesIcon from '../../assets/icons/notes_icon.svg';
 import './QuestionRow.css';
 import Modal from '../../modals/Modal';
@@ -7,6 +11,7 @@ import NotesModal from '../../modals/NotesModal';
 import {Link} from 'react-router-dom';
 
 type QuestionRowProps = {
+  notes: string;
   Problem: string;
   id: number;
   URL: string;
@@ -19,6 +24,8 @@ type QuestionRowProps = {
 const QuestionRow = (props: QuestionRowProps) => {
   const [isDone, setIsDone] = useState(props.Done);
   const [showModal, setShowModal] = useState(false);
+  const [notesState, setNotesState] = useState(props.notes);
+
   const handleCheckboxChange = async (
       event: React.ChangeEvent<HTMLInputElement>,
   ) => {
@@ -42,13 +49,18 @@ const QuestionRow = (props: QuestionRowProps) => {
     setShowModal(false);
   }
 
-  function saveHandler() {
-
+  async function saveHandler(notes: string | undefined) {
+    if (notes !== undefined) {
+      await saveNotesToDb(props.topicId, props.id - 1, notes);
+      setNotesState(notes);
+      setShowModal(false);
+    }
   }
   return (
     <>
       {showModal && <Modal >
         <NotesModal
+          notes={notesState}
           heading = {props.Problem}
           closeHandler = {closeHandler}
           saveHandler = {saveHandler}
